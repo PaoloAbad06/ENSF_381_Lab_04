@@ -77,3 +77,32 @@ sortByGroupBtn.addEventListener("click", () => {
     console.log(users);
     render(users);
 })
+
+deleteBtn.addEventListener("click", async function () {
+  var Deleteid = deleteIdInput.value;
+
+  if (!Deleteid) {
+    console.log("Please enter an ID.");
+    return;
+  }
+  try {
+    var res = await fetch(USERS_API_URL + "/" + Deleteid, {
+      method: "DELETE"
+    });
+
+    if (!res.ok) {
+      console.log("Delete failed.");
+      return;
+    }
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].id == Deleteid) {
+        users.splice(i, 1);
+        break;
+      }
+    }
+    render(users);
+    deleteIdInput.value = "";}
+  catch (error) {
+    console.log("Delete error:", error);
+  }
+});
