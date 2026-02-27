@@ -71,3 +71,9 @@ sortByIdBtn.addEventListener("click", () => {
   render(users);
 });
 
+sortByGroupBtn.addEventListener("click", () => {
+    users.sort((a, b) => Number(a.user_group) - Number(b.user_group));
+    render(users);
+    console.log(users);
+    render(users);
+})
