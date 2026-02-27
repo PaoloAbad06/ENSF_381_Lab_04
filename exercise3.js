@@ -65,3 +65,9 @@ viewToggleBtn.addEventListener("click", () => {
     userGrid.classList.add("grid-view");
   }
 })
+
+sortByIdBtn.addEventListener("click", () => {
+  users.sort((a, b) => Number(a.id) - Number(b.id));
+  render(users);
+});
+
